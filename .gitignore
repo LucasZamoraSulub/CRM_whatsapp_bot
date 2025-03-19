@@ -1,0 +1,12 @@
+node_modules
+.env
+
+*_sessions
+*tokens
+.wwebjs*
+
+*.log
+*qr.png
+
+tmp/*
+!tmp/.gitkeep
