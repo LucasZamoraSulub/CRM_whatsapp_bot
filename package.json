@@ -1,18 +1,30 @@
 {
-  "name": "crm-whatsapp-bot",
-  "version": "0.0.0",
-  "private": true,
+  "name": "crm_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "axios": "^1.8.3",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   }
 }
