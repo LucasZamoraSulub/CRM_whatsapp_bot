@@ -5,7 +5,7 @@ import poolPromise from '../config/db';
  * @param conversationId - ID de la conversación.
  * @param mensajeUsuario - El mensaje enviado por el usuario.
  * @param respuesta - La respuesta recibida (por ejemplo, la respuesta de la API de WhatsApp).
- * @param idUsuario - ID del usuario (en este ejemplo, usaremos el valor 7 para pruebas).
+ * @param idUsuario - ID del usuario (en este ejemplo, se usará el valor 7 para pruebas).
  * @returns El ID insertado en la tabla.
  */
 export async function addMessage(
@@ -21,7 +21,6 @@ export async function addMessage(
       VALUES (?, ?, ?, ?, NOW(), NOW())`,
       [conversationId, mensajeUsuario, respuesta, idUsuario]
     );
-    // result.insertId contiene el ID de la fila insertada
     return result.insertId;
   } catch (error) {
     console.error("Error inserting message:", error);
@@ -52,9 +51,9 @@ export async function getMessagesByConversation(conversationId: number, limit: n
  * Obtiene el teléfono del cliente a partir del id de la conversación.
  * Se asume que la tabla "conversacion" tiene la columna id_cliente que referencia a la tabla "clientes_potenciales".
  * @param conversationId - ID de la conversación.
- * @returns El número de teléfono del cliente.
+ * @returns El número de teléfono del cliente, o null si no se encuentra.
  */
-export async function getClientPhoneByConversation(conversationId: number): Promise<string> {
+export async function getClientPhoneByConversation(conversationId: number): Promise<string | null> {
   try {
     const [rows]: any = await poolPromise.query(
       `SELECT cp.telefono 
@@ -64,7 +63,7 @@ export async function getClientPhoneByConversation(conversationId: number): Prom
       [conversationId]
     );
     if (rows.length === 0) {
-      throw new Error("No se encontró el teléfono para la conversación especificada.");
+      return null;
     }
     return rows[0].telefono;
   } catch (error) {

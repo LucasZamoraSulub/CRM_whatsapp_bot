@@ -1,9 +1,8 @@
-import { Router, Request, Response } from 'express';
+import { Router } from "express";
+import { ClientController } from "../controllers/clientController";
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.render('index', { title: 'CRM de WhatsApp' });
-});
+router.get('/crm/clients-get-all', ClientController.getAllClients);
 
 export default router;

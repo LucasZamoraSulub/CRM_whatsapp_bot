@@ -1,0 +1,20 @@
+version: '2.2'
+
+services:
+  app: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prod-api-whatsapp-crm:0.0.1
+    env_file:
+      - .env
+    ports:
+     - "3008:3008"
+    container_name: prod-api-crm-whats
+    working_dir: /app
+    restart: always
+    volumes:
+        - .:/app
+    expose:
+      - "3008"
+ 
